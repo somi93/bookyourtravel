@@ -1,0 +1,257 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="city")
+ */
+
+class City
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $photo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="city")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     */
+    private $country;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Hotel", mappedBy="city")
+     */
+    private $hotels;
+
+    /**
+     * @return mixed
+     */
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $area;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $population;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $average_temperature;
+
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    /**
+     * @param mixed $area
+     */
+    public function setArea($area)
+    {
+        $this->area = $area;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPopulation()
+    {
+        return $this->population;
+    }
+
+    /**
+     * @param mixed $population
+     */
+    public function setPopulation($population)
+    {
+        $this->population = $population;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAverageTemperature()
+    {
+        return $this->average_temperature;
+    }
+
+    /**
+     * @param mixed $average_temperature
+     */
+    public function setAverageTemperature($average_temperature)
+    {
+        $this->average_temperature = $average_temperature;
+    }
+
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AppBundle\Entity\Country $country
+     *
+     * @return City
+     */
+    public function setCountry(\AppBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AppBundle\Entity\Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->hotels = new ArrayCollection();
+    }
+
+    /**
+     * Add hotel
+     *
+     * @param \AppBundle\Entity\Hotel $hotel
+     *
+     * @return City
+     */
+    public function addHotel(\AppBundle\Entity\Hotel $hotel)
+    {
+        $this->hotels[] = $hotel;
+
+        return $this;
+    }
+
+    /**
+     * Remove hotel
+     *
+     * @param \AppBundle\Entity\Hotel $hotel
+     */
+    public function removeHotel(\AppBundle\Entity\Hotel $hotel)
+    {
+        $this->hotels->removeElement($hotel);
+    }
+
+    /**
+     * Get hotels
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHotels()
+    {
+        return $this->hotels;
+    }
+
+}

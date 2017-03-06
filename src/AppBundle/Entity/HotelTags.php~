@@ -1,0 +1,63 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="hotel_tag")
+ */
+
+class HotelTags
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="hotel_tags")
+     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
+     */
+    private $hotel;
+
+    /**
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="hotel_tags")
+     * @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     */
+    private $tag;
+
+    /**
+     * @return mixed
+     */
+    public function getHotel()
+    {
+        return $this->hotel;
+    }
+
+    /**
+     * @param mixed $hotel
+     */
+    public function setHotel($hotel)
+    {
+        $this->hotel = $hotel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param mixed $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    }
+
+
+
+}

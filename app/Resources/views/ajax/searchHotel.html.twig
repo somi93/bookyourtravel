@@ -1,0 +1,66 @@
+    {% for hotel in hotels %}
+
+        <!--deal-->
+        <article class="one-third">
+            <figure><a href="{{ path('hotel', {'name': hotel.name}) }}" title=""><img src="{{ asset(hotel.photo) }}" alt="" /></a></figure>
+            <div class="details">
+                <h3>{{ hotel.name }}
+                    <span class="stars">
+                        {% for i in 1..hotel.stars  %}
+                            <i class="material-icons">&#xE838;</i>
+                        {% endfor %}
+                    </span>
+                </h3>
+                <span class="address">{{ hotel.city.name }}  •  <a href="#">Show on map</a></span>
+                <span class="rating">{{ hotel.rating['overalRating'] }}</span>
+                <span class="price">Price per night from
+                    {% if hotel.LowestPrice %}
+                        <em>$ {{ hotel.LowestPrice }}</em>
+                                            {% else %}
+                        <em></em>
+                    {% endif %}
+                                        </span>
+                <div class="description" id="scr">
+                    <p>{{ hotel.description }} <a href="{{ path('hotel', {'name': hotel.name}) }}">More info</a></p>
+                </div>
+                <a href="{{ path('hotel', {'name': hotel.name}) }}" title="Book now" class="gradient-button">Book now</a>
+            </div>
+        </article>
+        <!--//deal-->
+
+    {% endfor %}
+    <!--bottom navigation-->
+    <div class="bottom-nav">
+        <!--back up button-->
+        <a href="#" class="scroll-to-top" title="Back up">Back up</a>
+        <!--//back up button-->
+
+        <input type="hidden" id="totalResults" value="{{ totalResults }}">
+
+        <!--pager-->
+        <div class="pager">
+            {% if current_page == 1 %}
+                <span style="color: #999;padding:0 15px">First page</span>
+                <span style="color: #999"><</span>
+            {% else %}
+                <span><a href="#" class="page_link" data-page="1">First page</a></span>
+                <span><a href="#" class="page_link" data-page="{{ current_page-1 }}"><</a></span>
+            {% endif %}
+            {% for i in 1..number_of_links %}
+                {% if current_page == i %}
+                    <span class="current" data-page="{{ i }}"> {{ i }}</span>
+                {% else %}
+                    <span><a href="#" class="page_link" data-page="{{ i }}"> {{ i }}</a></span>
+                {% endif %}
+            {% endfor %}
+            {% if number_of_links == current_page %}
+                <span style="color:#999">></span>
+                <span style="color: #999;padding:0 15px">Last page</span>
+            {% else %}
+                <span><a href="#" class="page_link" data-page="{{ current_page+1 }}">></a></span>
+                <span><a href="#" class="page_link" data-page="{{ number_of_links }}">Last page</a></span>
+            {% endif %}
+        </div>
+        <!--//pager-->
+    </div>
+    <!--//bottom navigation-->

@@ -1,0 +1,98 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="hotel_tags")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class HotelTag
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="hotel_tags")
+     * @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     * */
+    protected $tag_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="hotel_tags")
+     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
+     * */
+    protected $hotel_id;
+
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set tagId
+     *
+     * @param \AppBundle\Entity\Tag $tagId
+     *
+     * @return HotelTag
+     */
+    public function setTagId(\AppBundle\Entity\Tag $tagId = null)
+    {
+        $this->tag_id = $tagId;
+
+        return $this;
+    }
+
+    /**
+     * Get tagId
+     *
+     * @return \AppBundle\Entity\Tag
+     */
+    public function getTagId()
+    {
+        return $this->tag_id;
+    }
+
+    /**
+     * Set hotelId
+     *
+     * @param \AppBundle\Entity\Hotel $hotelId
+     *
+     * @return HotelTag
+     */
+    public function setHotelId(\AppBundle\Entity\Hotel $hotelId = null)
+    {
+        $this->hotel_id = $hotelId;
+
+        return $this;
+    }
+
+    /**
+     * Get hotelId
+     *
+     * @return \AppBundle\Entity\Hotel
+     */
+    public function getHotelId()
+    {
+        return $this->hotel_id;
+    }
+}

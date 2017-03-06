@@ -1,0 +1,323 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!--main-->
+    <main class="main">
+        <div class="wrap">
+            <!--breadcrumbs-->
+            <nav class="breadcrumbs">
+                <!--crumbs-->
+                <ul>
+                    <li><a href="#" title="Home">Home</a></li>
+                    <li><a href="#" title="Hotels">Hotels</a></li>
+                    <li>Search results</li>
+                </ul>
+                <!--//crumbs-->
+
+                <!--top right navigation-->
+                <ul class="top-right-nav">
+                    <li><a href="#" id="a_total_links">{{ total_results }} Hotels</a></li>
+                    <li><a href="#" title="Back to results">Back to results</a></li>
+                    <li><a href="#" title="Change search">Change search</a></li>
+                </ul>
+                <!--//top right navigation-->
+            </nav>
+            <!--//breadcrumbs-->
+
+            <div class="row">
+                <!--sidebar-->
+                <aside class="one-fourth left-sidebar">
+                    <article class="widget refine-search-results">
+                        <h4>Refine search results</h4>
+                        <dl>
+
+                            <!--City-->
+                            <dt>City</dt>
+                            <dd>
+                                <div class="input-text">
+                                    <input type="text" id="city" placeholder="City Name" value="{{ city_name }}">
+                                </div>
+                            </dd>
+                            <!--//City-->
+
+                            <!--Price (per night)-->
+                            <dt>Price (per night)</dt>
+                            <dd>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="ch1" name="price" />
+                                    <label for="ch1">0 - 49 $</label>
+                                </div>
+                            </dd>
+                            <!--//Price (per night)-->
+
+                            <!--Hotel facilities-->
+                            <dt>Hotel facilities</dt>
+                            <dd>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_bar" name="bar" />
+                                    <label for="ch35">Bar</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_concierge_services" name="concierge_services" />
+                                    <label for="ch35">Concierge Service</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_conference_space" name="conference_space" />
+                                    <label for="ch35">Conference Space</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_elevator" name="elevator" />
+                                    <label for="ch35">Elevator</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_fitness_centre" name="fitness_centre" />
+                                    <label for="ch35">Fitness Centre</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_free_parking" name="free_parking" />
+                                    <label for="ch35">Free Parking</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_garden" name="garden" />
+                                    <label for="ch35">Garden</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_hair_salon" name="hair_salon" />
+                                    <label for="ch35">Hair Salon</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_indoor_pool" name="indoor_pool" />
+                                    <label for="ch35">Indoor Pool</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_laundry_service" name="laundry_service" />
+                                    <label for="ch35">Laundry Service</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_library" name="library" />
+                                    <label for="ch35">Library</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_luggage_store" name="luggage_store" />
+                                    <label for="ch35">Luggage Store</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_massage" name="massage" />
+                                    <label for="ch35">Massage</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_restaurant" name="restaurant" />
+                                    <label for="ch35">Restaurant</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_sauna" name="sauna" />
+                                    <label for="ch35">Sauna</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_shop" name="shop" />
+                                    <label for="ch35">Shop</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_smoke_free_property" name="smoke_free_property" />
+                                    <label for="ch35">Smoke Free Property</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_spa" name="spa" />
+                                    <label for="ch35">Spa</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_tennis_court" name="tennis_court" />
+                                    <label for="ch35">Tennis Court</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_terrace" name="terrace" />
+                                    <label for="ch35">Terrace</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_wedding_service" name="wedding_service" />
+                                    <label for="ch35">Wedding Service</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="chb_wifi" name="wifi" />
+                                    <label for="ch35">Wi-Fi</label>
+                                </div>
+                            </dd>
+                            <!--//Hotel facilities-->
+
+                            <!--Star rating-->
+                            <dt>Star rating</dt>
+                            <dd>
+                                <select id="ddl-star">
+                                    <option value="0">Choose Star Rating</option>
+                                    <option value="2">2 or more</option>
+                                    <option value="3">3 or more</option>
+                                    <option value="4">4 or more</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </dd>
+                            <!--//Star rating-->
+
+                            <!--User rating-->
+                            <dt>User rating</dt>
+                            <dd>
+                                <div id="slider"></div>
+                                <span class="min">0</span><span class="max">10</span>
+                            </dd>
+                            <!--//User rating-->
+
+                            <!--Tags-->
+                            <dt>Tags</dt>
+                            <dd>
+                                {% for tag in tags %}
+                                    <div class="checkbox">
+                                        <input type="checkbox" data-id="{{ tag.id }}" class="chb_tags" name="{{ tag.tagName }}" />
+                                        <label for="ch6">{{ tag.tagName }}</label>
+                                    </div>
+                                {% endfor %}
+                            </dd>
+                            <!--//Tags-->
+
+                            <!--Room facilites-->
+                            <dt>Room facilites</dt>
+                            <dd>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="ch49" name="room-facilities" />
+                                    <label for="ch49">Bathroom</label>
+                                </div>
+                            </dd>
+                            <!--//Room facilites-->
+
+                            <!--Average Temperature (City)-->
+                            <dt>Average Temperature (City)</dt>
+                            <dd>
+                                <div style="float:left;width:40%;">
+                                    <label>Min</label>
+                                    <input type="number" id="min_avg_temperature">
+                                </div>
+                                <div style="float:right;width:40%;">
+                                    <label>Max</label>
+                                    <input type="number" id="max_avg_temperature">
+                                </div>
+                                <div class="clear"></div>
+                            </dd>
+                            <!--//Average Temperature (city)-->
+
+                            <!-- Search Button -->
+                            <dd style="text-align: center">
+                                <input type="button" name="{{ path('searchResult') }}" id="search-button" value="Search" style="border-radius: 4px;border:2px solid#ccc">
+                            </dd>
+                            <!--// Search Button -->
+                        </dl>
+                    </article>
+                </aside>
+                <!--//sidebar-->
+
+                <!--three-fourth content-->
+                <div class="three-fourth">
+                    <div class="sort-by">
+                        <h3>Sort by</h3>
+                        <ul class="sort">
+                            <li>Popularity
+                                <a href="#" title="ascending" data-order="asc" data-column="h.popularity" class="order ascending">ascending</a>
+                                <a href="#" title="descending" data-order="desc" data-column="h.popularity" class="order descending">descending</a>
+                            </li>
+                            <li>Price
+                                <a href="#" title="ascending" data-order="asc" data-column="h.price" class="order ascending">ascending</a>
+                                <a href="#" title="descending" data-order="desc" data-column="h.price" class="order descending">descending</a>
+                            </li>
+                            <li>Stars
+                                <a href="#" title="ascending"  data-order="asc" data-column="h.stars" class="order ascending">ascending</a>
+                                <a href="#" title="descending" data-order="desc" data-column="h.stars" class="order current descending">descending</a>
+                            </li>
+                            <li>Rating
+                                <a href="#" title="ascending" data-order="asc" data-column="h.rating" class="order ascending">ascending</a>
+                                <a href="#" title="descending" data-order="desc" data-column="h.rating" class="order descending">descending</a>
+                            </li>
+                        </ul>
+
+                        <ul class="view-type">
+                            <li class="grid-view"><a href="#" title="grid view">grid view</a></li>
+                            <li class="list-view"><a href="#" title="list view">list view</a></li>
+                            <li class="location-view"><a href="#" title="location view">location view</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row deals">
+                        <div id="loading-div" class="hidden">
+                            <img src="{{ asset('images/ajax-loader.gif') }}">
+                        </div>
+                        <div class="hotel-search-results">
+                            {% for hotel in hotels %}
+
+                                <!--deal-->
+                                <article class="one-third">
+                                    <figure><a href="{{ path('hotel', {'name': hotel.name}) }}" title=""><img src="{{ asset(hotel.photo) }}" alt="" /></a></figure>
+                                    <div class="details">
+                                        <h3>{{ hotel.name }}
+                                            <span class="stars">
+                                                {% for i in 1..hotel.stars  %}
+                                                    <i class="material-icons">&#xE838;</i>
+                                                {% endfor %}
+                                            </span>
+                                        </h3>
+                                        <span class="address">{{ hotel.city.name }}  •  <a href="#">Show on map</a></span>
+                                        <span class="rating">{{ hotel.rating['overalRating'] }}</span>
+                                        <span class="price">Price per night from
+                                            {% if hotel.LowestPrice %}
+                                                <em>$ {{ hotel.LowestPrice }}</em>
+                                            {% else %}
+                                                <em></em>
+                                            {% endif %}
+                                        </span>
+                                        <div class="description" id="scr">
+                                            <p>{{ hotel.description }} <a href="{{ path('hotel', {'name': hotel.name}) }}">More info</a></p>
+                                        </div>
+                                        <a href="{{ path('hotel', {'name': hotel.name}) }}" title="Book now" class="gradient-button">Book now</a>
+                                    </div>
+                                </article>
+                                <!--//deal-->
+
+                            {% endfor %}
+
+                            <!--bottom navigation-->
+                            <div class="bottom-nav">
+                                <!--back up button-->
+                                <a href="#" class="scroll-to-top" title="Back up">Back up</a>
+                                <!--//back up button-->
+
+                                <input type="hidden" id="totalResults" value="{{ total_results }}">
+
+                                <!--pager-->
+                                <div class="pager">
+                                    <span style="color: #999;padding:0 15px">First page</span>
+                                    <span style="color: #999"><</span>
+                                    {% for i in 1..number_of_links %}
+                                        {% if 1 == i %}
+                                            <span class="current" data-page="1">1</span>
+                                        {% else %}
+                                            <span><a href="#" class="page_link" data-page="{{ i }}"> {{ i }}</a></span>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if number_of_links == 1 %}
+                                        <span style="color:#999">></span>
+                                        <span style="color: #999;padding:0 15px">Last page</span>
+                                    {% else %}
+                                        <span><a href="#" class="page_link" data-page="2">></a></span>
+                                        <span><a href="#" class="page_link" data-page="{{ number_of_links }}">Last page</a></span>
+                                    {% endif %}
+                                </div>
+                                <!--//pager-->
+                            </div>
+                            <!--//bottom navigation-->
+                        </div>
+                    </div>
+                </div>
+                <!--//three-fourth content-->
+            </div>
+            <!--//main content-->
+        </div>
+    </main>
+    <!--//main-->
+
+{% endblock %}

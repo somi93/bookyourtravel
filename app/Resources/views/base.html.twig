@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Book Your Travel - Home</title>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/theme-turqoise.css') }}" id="template-color" />
+        <link rel="stylesheet" href="{{ asset('css/lightslider.min.css') }}" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Roboto+Slab:400,700&subset=latin,latin-ext,greek-ext,greek,cyrillic,vietnamese,cyrillic-ext">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://use.fontawesome.com/e808bf9397.js"></script>
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="stylesheet" href="{{ asset('css/styler.css') }}" type="text/css" />
+    </head>
+    <body onload="initialize()">
+        <!--header-->
+        <header class="header">
+            <div class="wrap">
+                <!--logo-->
+                <div class="logo">
+                    <a href="{{ url('homepage') }}" title="Book Your Travel">
+                        <img src="{{ asset('images/txt/logo.png') }}" alt="Book Your Travel" />
+                    </a>
+                </div>
+                <!--//logo-->
+
+                <!--search-->
+                <div class="search">
+                    <form id="search-form" method="get" action="search-form">
+                        <input type="search" placeholder="Search entire site here" name="site_search" id="site_search" />
+                        <input type="submit" id="submit-site-search" value="submit-site-search" name="submit-site-search"/>
+                    </form>
+                </div>
+                <!--//search-->
+
+                <!--contact-->
+                <div class="contact">
+                    <span>24/7 Support number</span>
+                    <span class="number">1- 555 - 555 - 555</span>
+                </div>
+                <!--//contact-->
+            </div>
+
+            <!--main navigation-->
+            <nav class="main-nav">
+                <div class="wrap">
+                    <ul class="slimmenu" id="nav">
+                        {% for link in links %}
+                        <li
+                            {% if app.request.attributes.get('_route') == link.link %}
+                                class="current"
+                            {% endif %}>
+                            <a href="{{ path(link.link) }}" title="">{{ link.linkText }}</a>
+                        </li>
+                        {% endfor %}
+                        {%  if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{{ url('fos_user_registration_register') }}">Register</a></li>
+                            <li><a href="#" id="login">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+            <!--//main navigation-->
+        </header>
+        <!--//header-->
+
+        {% block body %}{% endblock %}
+
+        <!--footer-->
+        <footer class="footer">
+            <div class="wrap">
+                <div class="row">
+                    <!--column-->
+                    <article class="one-fourth">
+                        <h6>Book Your Travel</h6>
+                        <p>1400 PennsylSUVia Ave. Washington, DC</p>
+                        <p><em>P:</em> 24/7 customer support: 1-555-555-5555</p>
+                        <p><em>E:</em> <a href="#" title="booking@mail.com">booking@mail.com</a></p>
+                    </article>
+                    <!--//column-->
+
+                    <!--column-->
+                    <article class="one-fourth">
+                        <h6>Customer support</h6>
+                        <ul>
+                            <li><a href="#" title="Faq">Faq</a></li>
+                            <li><a href="#" title="How do I make a reservation?">How do I make a reservation?</a></li>
+                            <li><a href="#" title="Payment options">Payment options</a></li>
+                            <li><a href="#" title="Booking tips">Booking tips</a></li>
+                        </ul>
+                    </article>
+                    <!--//column-->
+
+                    <!--column-->
+                    <article class="one-fourth">
+                        <h6>Follow us</h6>
+                        <ul class="social">
+                            <li><a href="#" title="facebook"><i class="fa fa-fw fa-facebook"></i></a></li>
+                            <li><a href="#" title="youtube"><i class="fa  fa-fw fa-youtube"></i></a></li>
+                            <li><a href="#" title="rss"><i class="fa  fa-fw fa-rss"></i></a></li>
+                            <li><a href="#" title="gplus"><i class="fa fa-fw fa-google-plus"></i></a></li>
+                            <li><a href="#" title="linkedin"><i class="fa fa-fw fa-linkedin"></i></a></li>
+                            <li><a href="#" title="twitter"><i class="fa fa-fw fa-twitter"></i></a></li>
+                            <li><a href="#" title="pinterest"><i class="fa fa-fw fa-pinterest-p"></i></a></li>
+                            <li><a href="#" title="vimeo"><i class="fa fa-fw fa-vimeo"></i></a></li>
+                        </ul>
+                    </article>
+                    <!--//column-->
+
+                    <!--column-->
+                    <article class="one-fourth">
+                        <h6>Don’t miss our exclusive offers</h6>
+                        <form id="newsletter" action="newsletter.php" method="post">
+                            <fieldset>
+                                <input type="email" id="newsletter_signup" name="newsletter_signup" placeholder="Enter your email here" />
+                                <input type="submit" id="newsletter_submit" name="newsletter_submit" value="Signup" class="gradient-button" />
+                            </fieldset>
+                        </form>
+                    </article>
+                    <!--//column-->
+
+                    <div class="bottom full-width">
+                        <p class="copy">Copyright 2016 Book your travel ltd. All rights reserved</p>
+                        <nav>
+                            <ul>
+                                <li><a href="#" title="About us">About us</a></li>
+                                <li><a href="contact.html" title="Contact">Contact</a></li>
+                                <li><a href="#" title="Partners">Partners</a></li>
+                                <li><a href="#" title="Customer service">Customer service</a></li>
+                                <li><a href="#" title="FAQ">FAQ</a></li>
+                                <li><a href="#" title="Careers">Careers</a></li>
+                                <li><a href="#" title="Terms & Conditions">Terms &amp; Conditions</a></li>
+                                <li><a href="#" title="Privacy statement">Privacy statement</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!---footer-->
+
+        <div class="lightbox register-block hidden">
+            <div class="lb-wrap">
+                <a href="#" class="close">x</a>
+                <div class="lb-content">
+                    <form class="row">
+                        <h3>Register</h3>
+                        <div class="f-item full-width">
+                            <label for="f_name">Name and surname</label>
+                            <input type="text" id="ns_name" name="ns_name" />
+                        </div>
+                        <div class="f-item full-width">
+                            <label for="email">E-mail address</label>
+                            <input type="email" id="email" name="email" />
+                        </div>
+                        <div class="f-item full-width">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" />
+                        </div>
+                        <div class="f-item checkbox full-width">
+                            <input type="checkbox" id="newsletter_s" name="newsletter" />
+                            <label for="newsletter_s">Tell me about inspiring travel news, and exclusive discounts!</label>
+                        </div>
+                        <div class="f-item checkbox full-width">
+                            <p>By clicking "Create Account" you confirm that you accept the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. </p>
+                            <input type="submit" id="register" name="register" value="Create Account" class="gradient-button" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="lightbox login-block hidden">
+            <div class="lb-wrap">
+                <a href="#" class="close">x</a>
+                <div class="lb-content">
+                    <form class="row" action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+                        <h3>Log in</h3>
+                        <div class="f-item full-width">
+                            <label for="email">Username</label>
+                            <input type="text" id="username" name="_username"  />
+                        </div>
+                        <div class="f-item full-width">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="_password" />
+                        </div>
+                        <div class="f-item checkbox full-width">
+                            <input type="checkbox" id="remember_me" name="checkbox" />
+                            <label for="remember_me">Remember me next time</label>
+                        </div>
+                        <div class="f-item full-width">
+                            <p><a href="#" title="Forgot password?">Forgot password?</a><br />
+                                Dont have an account yet? <a href="#" title="Sign up">Sign up.</a></p>
+                            <input type="submit" id="_submit" name="_submit" value="login" class="gradient-button" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.uniform.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.slimmenu.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/lightslider.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/lightgallery-all.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/search.js') }}"></script>
+        <script type="text/javascript">
+            function initialize() {
+                var secheltLoc = new google.maps.LatLng(49.47216, -123.76307);
+
+                var myMapOptions = {
+                    zoom: 15
+                    ,center: secheltLoc
+                    ,mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var theMap = new google.maps.Map(document.getElementById("map_canvas"), myMapOptions);
+
+
+                var marker = new google.maps.Marker({
+                    map: theMap,
+                    draggable: true,
+                    position: new google.maps.LatLng(49.47216, -123.76307),
+                    visible: true
+                });
+
+                var boxText = document.createElement("div");
+                boxText.innerHTML = "<strong>Best ipsum hotel</strong>1400 PennsylSUVia Ave,Washington DCwww.bestipsumhotel.com";
+
+                var myOptions = {
+                    content: boxText
+                    ,disableAutoPan: false
+                    ,maxWidth: 0
+                    ,pixelOffset: new google.maps.Size(-140, 0)
+                    ,zIndex: null
+                    ,closeBoxURL: ""
+                    ,infoBoxClearance: new google.maps.Size(1, 1)
+                    ,isHidden: false
+                    ,pane: "floatPane"
+                    ,enableEventPropagation: false
+                };
+
+                google.maps.event.addListener(marker, "click", function (e) {
+                    ib.open(theMap, this);
+                });
+
+                var ib = new InfoBox(myOptions);
+                ib.open(theMap, marker);
+            }
+        </script>
+        <script type="text/javascript">
+            (function( $ ) {
+                $(document).ready(function(){
+                    $('.form').hide();
+                    $('#form1').show();
+                    $('.f-item:nth-child(1)').addClass('active');
+                    $('.f-item:nth-child(1) span').addClass('checked');
+
+                    $('#hero-gallery').lightSlider({
+                        gallery:true,
+                        item:1,
+                        pager:false,
+                        gallery:false,
+                        slideMargin: 0,
+                        speed:2000,
+                        pause:6000,
+                        mode: 'fade',
+                        auto:true,
+                        loop:true,
+                        onSliderLoad: function() {
+                            $('#hero-gallery').removeClass('cS-hidden');
+                        }
+                    });
+                });
+            })(jQuery);
+        </script>
+
+        <script src="{{ asset('js/styler.js') }}"></script>
+    </body>
+</html>

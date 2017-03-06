@@ -1,0 +1,369 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!--main-->
+    <main class="main">
+        <div class="wrap">
+
+            <!--breadcrumbs-->
+            <nav class="breadcrumbs">
+                <!--crumbs-->
+                <ul>
+                    <li><a href="#" title="Home">Home</a></li>
+                    <li><a href="#" title="Hotels">Hotels</a></li>
+                    <li><a href="{{ path('location', {'city': room.hotel.city.name }) }}#" title="{{ room.hotel.city.name }}">{{ room.hotel.city.name }}</a></li>
+                    <li><a href="{{ path('hotel', {'name': room.hotel.name }) }}#" title="{{ room.hotel.name }}">{{ room.hotel.name }}</a></li>
+                    <li>{{ room.name }}</li>
+                </ul>
+                <!--//crumbs-->
+
+                <!--top right navigation-->
+                <ul class="top-right-nav">
+                    <li><a href="search_results.html" title="Back to results">Back to results</a></li>
+                    <li><a href="#" title="Change search">Change search</a></li>
+                </ul>
+                <!--//top right navigation-->
+            </nav>
+            <!--//breadcrumbs-->
+
+            <div class="row">
+                <!--hotel three-fourth content-->
+                <section class="three-fourth">
+                    <!--gallery-->
+                    <div class="gallery">
+                        <ul id="image-gallery" class="cS-hidden">
+                            <li data-thumb="images/uploads/hotel4.jpg">
+                                <img src="#" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel1.jpg">
+                                <img src="#" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel2.jpg">
+                                <img src="#" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel5.jpg">
+                                <img src="#" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel3.jpg">
+                                <img src="#" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel6.jpg">
+                                <img src="#" alt="" />
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//gallery-->
+
+                    <!--inner navigation-->
+                    <nav class="inner-nav hotel-nav">
+                        <ul>
+                            <li class="availability"><a href="#availability" title="Availability">Availability</a></li>
+                            <li class="things-to-do"><a href="#rooms" title="Rooms">Photos</a></li>
+                            <li class="description"><a href="#description" title="Description">Description</a></li>
+                            <li class="facilities"><a href="#facilities" title="Facilities">Facilities</a></li>
+                            <li class="location"><a href="#location" title="Location">Location</a></li>
+                            <li class="reviews"><a href="#reviews" title="Reviews">Reviews</a></li>
+                        </ul>
+                    </nav>
+                    <!--//inner navigation-->
+
+                    <!--availability-->
+                    <section id="availability" class="tab-content">
+                        <article>
+                            <h2> {{ room.name }} </h2>
+                            <figure>
+                                {% if room.singlePhoto %}
+                                    <img src="{{ asset(room.SinglePhoto.photo) }}
+                                {% else %}
+                                    <img src="{{ asset('images/no_image.jpg') }}" alt="" />
+                                {% endif %}" />
+                            </figure>
+                            <p>{{ room.hotel.description }}</p>
+                            <h2>Room types</h2>
+                            <ul class="room-types">
+
+                            </ul>
+                        </article>
+                    </section>
+                    <!--//availability-->
+
+                    <!--description-->
+                    <section id="description" class="tab-content">
+                        <article>
+                            <h2>General</h2>
+                            <div class="text-wrap">
+                                <p>{{ room.description }}</p>
+                            </div>
+
+                            <h2>Check-in</h2>
+                            <div class="text-wrap">
+                                <p>From 15:00 hours </p>
+                            </div>
+
+                            <h2>Check-out</h2>
+                            <div class="text-wrap">
+                                <p>Untill 12:00 hours </p>
+                            </div>
+
+                            <h2>Cancellation / Prepayment</h2>
+                            <div class="text-wrap">
+                                <p>Cancellation and prepayment policies vary according to room type. Please check the <a href="#">room conditions</a> when selecting your room. </p>
+                            </div>
+
+                            <h2>Children and extra beds</h2>
+                            <div class="text-wrap">
+                                <p><strong>Free!</strong> All children under 8 years stay free of charge when using existing beds.<strong>Free!</strong> All children under 2 years stay free of charge for children’s cots/cribs.All older children or adults are charged USD 40 per person per night for extra beds.The maximum number of extra beds/children’s cots permitted in a room is 1.Any type of extra bed or child’s cot/crib is upon request and needs to be confirmed by management.Supplements are not calculated automatically in the total costs and will have to be paid for separately when checking out.</p>
+                            </div>
+
+                            <h2>Pets</h2>
+                            <div class="text-wrap">
+                                <p>Pets are allowed. Charges may be applicable.</p>
+                            </div>
+
+                            <h2>Accepted credit cards</h2>
+                            <div class="text-wrap">
+                                <p>American Express, Visa, Euro/Mastercard, Diners ClubThe hotel reserves the right to pre-authorise credit cards prior to arrival.</p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//description-->
+
+                    <!--facilities-->
+                    <section id="facilities" class="tab-content">
+                        <article>
+                            <h2>Facilities</h2>
+                            <div class="text-wrap">
+                                <ul class="three-col">
+                                    {% if room.telephone %} <li>Telephone</li> {% endif %}
+                                    {% if room.tv %} <li>TV</li> {% endif %}
+                                    {% if room.shower %} <li>Shower</li> {% endif %}
+                                    {% if room.heating %} <li>Heating</li> {% endif %}
+                                    {% if room.desk %} <li>Desk</li> {% endif %}
+                                    {% if room.internet %} <li>Internet</li> {% endif %}
+                                    {% if room.roomService %} <li>Room Service</li> {% endif %}
+                                    {% if room.airConditioning %} <li>Air Conditioning</li> {% endif %}
+                                    {% if room.rainfallShowerhead %} <li>Rainfall Showerhead</li> {% endif %}
+                                    {% if room.sateliteChannels %} <li>Satelite Channels</li> {% endif %}
+                                    {% if room.premiumBedding %} <li>Premium Bedding</li> {% endif %}
+                                    {% if room.safe %} <li>Safe</li> {% endif %}
+                                    {% if room.minibar %} <li>Minibar</li> {% endif %}
+                                    {% if room.coffeeMaker %} <li>Coffee Maker</li> {% endif %}
+                                    {% if room.dailyHousekeeping %} <li>Daily Housekeeping</li> {% endif %}
+                                    {% if room.slippers %} <li>Slippers</li> {% endif %}
+                                </ul>
+                            </div>
+
+                            <h2>Activities</h2>
+                            <div class="text-wrap">
+                                <ul class="three-col">
+                                </ul>
+                            </div>
+
+                            <h2>Internet</h2>
+                            <div class="text-wrap">
+                                <p>
+                                    {% if room.internet %}
+                                        <strong>Free!</strong> WiFi is available in all areas and is free of charge.
+                                    {% else %}
+                                        <strong>Free!</strong> WiFi is not available.
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//facilities-->
+
+                    <!--location-->
+                    <section id="location" class="tab-content">
+                        <article>
+                            <!--map-->
+                            <div class="gmap">
+
+                            </div>
+                            <!--//map-->
+                        </article>
+                    </section>
+                    <!--//location-->
+
+                    <!--reviews-->
+                    <section id="reviews" class="tab-content">
+                        <article>
+                            <h2>Hotel Score and Score Breakdown</h2>
+                            <div class="score">
+                                <span class="achieved"></span>
+                                <span> / 10</span>
+                                <p class="info">Based on reviews</p>
+                                <p class="disclaimer">Guest reviews are written by our customers <strong>after their stay</strong> at Hotel.</p>
+                            </div>
+
+                            <dl class="chart">
+                                <dt>Clean</dt>
+                            </dl>
+                        </article>
+
+                        <article>
+                            <h2>Guest reviews</h2>
+                            <ul class="reviews">
+                            </ul>
+                        </article>
+                    </section>
+                    <!--//reviews-->
+
+                    <!--rooms-->
+                    <section id="rooms" class="tab-content" style="background: #fff">
+                        {% for photo in photos %}
+                            <article class="one-third" style="width:50% !important;">
+                                <figure style="border:2px solid#eee">
+                                    <img src="{{ asset(photo.photo) }}" style="margin:0" />
+                                </figure>
+                            </article>
+                        {% endfor %}
+                    </section>
+                    <!--//rooms-->
+                </section>
+                <!--//hotel content-->
+
+                <!--sidebar-->
+                <aside class="one-fourth right-sidebar">
+                    <!--hotel details-->
+                    <article class="hotel-details">
+                        <h1>{{ room.name }}
+                            <span class="stars">
+
+							</span>
+                        </h1>
+                        <span class="address">{{ room.hotel.city.country.name }}, {{ room.hotel.city.name }}, {{ room.hotel.name }}</span>
+                        <span class="rating"> 8 /10</span>
+                        <div class="description">
+                            <p>{{ room.description }}</p>
+                        </div>
+                        <div class="tags">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </article>
+                    <!--//hotel details-->
+
+                    <!--testimonials-->
+                    <article class="testimonials">
+                        <blockquote>Loved the staff and the location was just amazing... Perfect!” </blockquote>
+                        <span class="name">- Jane Doe, Solo Traveller</span>
+                    </article>
+                    <!--//testimonials-->
+
+                    <!--Need Help Booking?-->
+                    <article class="widget">
+                        <h4>Need Help Booking?</h4>
+                        <p>Call our customer services team on the number below to speak to one of our advisors who will help you with all of your holiday needs.</p>
+                        <p class="number">1- 555 - 555 - 555</p>
+                    </article>
+                    <!--//Need Help Booking?-->
+
+                    <!--Why Book with us?-->
+                    <article class="widget">
+                        <h4>Why Book with us?</h4>
+                        <h5>Low rates</h5>
+                        <p>Get the best rates, or get a refund.No booking fees. Save money!</p>
+                        <h5>Largest Selection</h5>
+                        <p>140,000+ hotels worldwide130+ airlinesOver 3 million guest reviews</p>
+                        <h5>We’re Always Here</h5>
+                        <p>Call or email us, anytimeGet 24-hour support before, during, and after your trip</p>
+                    </article>
+                    <!--//Why Book with us?-->
+
+                    <!--Popular hotels in the area-->
+                    <article class="widget">
+                        <h4>Popular hotels in the area</h4>
+                        <ul class="popular-hotels small-list">
+                            <li>
+                                <a href="#">
+                                    <h3>Plaza Resort Hotel &amp; SPA
+                                        <span class="stars">
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+										</span>
+                                    </h3>
+                                    <p>From <span class="price">$ 100 <small>/ per night</small></span></p>
+                                    <span class="rating"> 8 /10</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h3>Lorem Ipsum Inn
+                                        <span class="stars">
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+										</span>
+                                    </h3>
+                                    <p>From <span class="price">$ 110 <small>/ per night</small></span></p>
+                                                                                                                                                                                                                                                             <span class="rating"> 7 /10</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h3>Best Eastern London
+                                        <span class="stars">
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">                                                                                                                                         & #xE838;</i>
+										</span>
+                                    </h3>
+                                                                                                                                                                                                 <p>From <span class="price">$ 125 <small>/ per night</small></span></p>
+                                    <span class="rating           "> 8 /10</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h3>Plaza Resort Hotel &amp; SPA
+                                        <span class="stars">
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+											<i class="material-icons">&#xE838;</i>
+										</span>
+                                    </h3>
+                                    <p>From <span class="price">$ 100 <small>/ per night</small></span></p>
+                                    <span class="rating"> 8 /10</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="#" title="Show all" class="show-all">Show all</a>
+                    </article>
+                    <!--//Popular hotels in the area-->
+
+                    <!--Deal of the day-->
+                    <article class="widget">
+                        <h4>Deal of the day</h4>
+                        <div class="deal-of-the-day">
+                            <figure><a href="hotel.html"><img src="images/uploads/hotel2.jpg" alt=""  /></a></figure>
+                            <h3><a href="hotel.html">Plaza Resort Hotel &amp; SPA
+                                    <span class="stars">
+									<i class="material-icons">&#xE838;</i>
+									<i class="material-icons">&#xE838;</i>
+									<i class="material-icons">&#xE838;</i>
+									<i class="material-icons">&#xE838;</i>
+								</span>
+                                </a></h3>
+                            <p>From <span class="price">$ 100 <small>/ per night</small></span></p>
+                            <span class="rating"> 8 /10</span>
+                        </div>
+                    </article>
+                    <!--//Deal of the day-->
+                </aside>
+                <!--//sidebar-->
+            </div>
+            <!--//row-->
+        </div>
+    </main>
+    <!--//main-->
+
+{% endblock %}

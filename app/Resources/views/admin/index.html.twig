@@ -1,0 +1,268 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!--main-->
+    <main class="main">
+        <div class="wrap">
+
+            <!--breadcrumbs-->
+            <nav class="breadcrumbs">
+                <!--crumbs-->
+                <ul>
+                    <li><a href="#" title="Home">Home</a></li>
+                    <li>Admin</li>
+                </ul>
+                <!--//crumbs-->
+
+            </nav>
+            <!--//breadcrumbs-->
+
+            <div class="row">
+                <!--hotel three-fourth content-->
+                <section class="three-fourth" id="admin-content">
+                    <!--gallery-->
+                    <div class="gallery">
+                        <ul id="image-gallery" class="cS-hidden">
+                            <li data-thumb="images/uploads/hotel4.jpg">
+                                <img src="images/uploads/hotel4.jpg" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel1.jpg">
+                                <img src="images/uploads/hotel1.jpg" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel2.jpg">
+                                <img src="images/uploads/hotel2.jpg" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel5.jpg">
+                                <img src="images/uploads/hotel5.jpg" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel3.jpg">
+                                <img src="images/uploads/hotel3.jpg" alt="" />
+                            </li>
+                            <li data-thumb="images/uploads/hotel6.jpg">
+                                <img src="images/uploads/hotel6.jpg" alt="" />
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//gallery-->
+
+                    <!--inner navigation-->
+                    <nav class="inner-nav hotel-nav">
+                        <ul>
+                            <li class="availability"><a href="#availability" title="Navigation">Navigation</a></li>
+                            <li class="description"><a href="#description" title="Country">Country</a></li>
+                            <li class="facilities"><a href="#facilities" title="City">City</a></li>
+                            <li class="location"><a href="#hotel" title="Hotel">Hotel</a></li>
+                            <li class="facilities"><a href="#room" title="Room">Room</a></li>
+                            <li class="facilities"><a href="#roomPhoto" title="Room Photos">Room Photos</a></li>
+                            <li class="things-to-do"><a href="#tags" title="Tag">Tag</a></li>
+                            <li class="reviews"><a href="#reviews" title="Reviews">Reviews</a></li>
+                            <li class="description"><a href="#hoteltags" title="Hotel Tags">Hotel Tags</a></li>
+                        </ul>
+                    </nav>
+                    <!--//inner navigation-->
+
+                    <!--availability-->
+                    <section id="availability" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap">
+                                <p>
+                                    {{ form_start(navForm) }}
+                                    {{ form_row(navForm.link) }}
+                                    <br/>
+                                    {{ form_row(navForm.linkText) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(navForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//availability-->
+
+                    <!--description-->
+                    <section id="description" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap">
+                                <p>
+                                    {{ form_start(countryForm) }}
+                                    {{ form_widget(countryForm) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(countryForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//description-->
+
+                    <!--city-->
+                    <section id="facilities" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap">
+                                <p>
+                                    {{ form_start(cityForm) }}
+                                    {{ form_widget(cityForm) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(cityForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//city-->
+
+                    <!--hotel-->
+                    <section id="hotel" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap" style="text-align: left;">
+                                <p>
+                                    {{ form_start(hotelForm) }}
+                                    {{ form_widget(hotelForm) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(hotelForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//hotel-->
+
+                    <!--room-->
+                    <section id="room" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap" style="text-align: left;">
+                                <p>
+                                    {{ form_start(roomForm) }}
+                                    {{ form_widget(roomForm) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(roomForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//room-->
+
+                    <!--roomPhotos-->
+                    <section id="roomPhoto" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap" style="text-align: left;">
+                                <p>
+                                    {{ form_start(roomPhotoForm) }}
+                                    {{ form_widget(roomPhotoForm) }}
+                                    <div>
+                                        <label for="room_form_hotel" class="required">Room</label>
+                                        <select id="room_form_hotel" class="room_form_hotel" name="room_form[hotel]">
+
+                                        </select>
+                                    </div>
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(roomPhotoForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//roomPhotos-->
+
+                    <!--tags-->
+                    <section id="tags" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap">
+                                <p>
+                                    {{ form_start(tagForm) }}
+                                    {{ form_widget(tagForm) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(tagForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//tags-->
+
+                    <!--reviews-->
+                    <section id="reviews" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap">
+                                <p>
+                                    {{ form_start(reviewForm) }}
+                                    {{ form_widget(reviewForm) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(reviewForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//reviews-->
+
+                    <!--reviews-->
+                    <section id="hoteltags" class="tab-content">
+                        <article style="text-align: center">
+                            <h2>Admin Panel</h2>
+                            <div class="text-wrap">
+                                <p>
+                                    {{ form_start(hotelTagForm) }}
+                                    {{ form_widget(hotelTagForm) }}
+                                    <br/>
+                                    <button type="submit" class="button admin-button">Insert</button>
+                                    {{ form_end(hotelTagForm) }}
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                    <!--//reviews-->
+
+                </section>
+                <!--//hotel content-->
+
+                <!--sidebar-->
+                <aside class="one-fourth right-sidebar">
+                    <!--hotel details-->
+                    <article class="hotel-details">
+                    </article>
+                    <!--//hotel details-->
+
+                    <!--testimonials-->
+                    <article class="testimonials">
+                    </article>
+                    <!--//testimonials-->
+
+                    <!--Need Help Booking?-->
+                    <article class="widget">
+                    </article>
+                    <!--//Need Help Booking?-->
+
+                    <!--Why Book with us?-->
+                    <article class="widget">
+                    </article>
+                    <!--//Why Book with us?-->
+
+                    <!--Popular hotels in the area-->
+                    <article class="widget">
+                    </article>
+                    <!--//Popular hotels in the area-->
+
+                    <!--Deal of the day-->
+                    <article class="widget">
+                    </article>
+                    <!--//Deal of the day-->
+                </aside>
+                <!--//sidebar-->
+            </div>
+            <!--//row-->
+        </div>
+    </main>
+    <!--//main-->
+
+{% endblock %}
